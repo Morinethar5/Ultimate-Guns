@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114543474990443592}
   - component: {fileID: 153040427216516798}
   - component: {fileID: 114889045508519810}
+  - component: {fileID: 114636245523133254}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -632,6 +633,21 @@ MonoBehaviour:
     i15: 67
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114636245523133254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697210978207008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c43bd13ac274b83bd6e2486aa6ed92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  disableOnDeath:
+  - {fileID: 114889045508519810}
+  - {fileID: 114235871868503782}
 --- !u!114 &114824199060268868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -659,10 +675,10 @@ MonoBehaviour:
   cam: {fileID: 20453138033242928}
   mask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   weapon:
     name: Glock
-    damage: 10
+    damage: 40
     range: 100
 --- !u!124 &124479737697146984
 Behaviour:
