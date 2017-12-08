@@ -13,6 +13,7 @@ public class WeaponManager : NetworkBehaviour {
 	private PlayerWeapon primaryWeapon;
 
 	private PlayerWeapon currentWeapon;
+	private WeaponGFX currentGFX;
 
 	void Start () {
 		EquipWeapon (primaryWeapon);
@@ -23,12 +24,22 @@ public class WeaponManager : NetworkBehaviour {
 
 		GameObject _weaponIns = (GameObject)Instantiate (_weapon.graphics, weaponHolder.position, weaponHolder.rotation);
 		_weaponIns.transform.SetParent (weaponHolder);
+
+		currentGFX = _weaponIns.GetComponent<WeaponGFX> ();
+		if (currentGFX == null) {
+			Debug.LogError ("No WeaponGFX component on the weapon object:" + _weaponIns.name);
+		}
+
 		if (isLocalPlayer) {
-			_weaponIns.layer = LayerMask.NameToLayer (weaponLayerName);
+			Util.SetLayerRecursively(_weaponIns, LayerMask.NameToLayer(weaponLayerName));
 		}
 	}
 
 	public PlayerWeapon GetCurrentWeapon () {
 		return currentWeapon;
+	}
+
+	public WeaponGFX GetCurrentGFX () {
+		return currentGFX;
 	}
 }
