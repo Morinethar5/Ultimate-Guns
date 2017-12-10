@@ -46,6 +46,10 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update() {
+		if (PauseMenu.isOn) {
+			return;
+		}
+
 		//Setting target position for the spring. This makes the physics act right when it applying gravity when flying over objects.
 		RaycastHit _hit;
 		if (Physics.Raycast (transform.position, Vector3.down, out _hit, 100f, environmentMask)) {
